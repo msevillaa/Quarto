@@ -25,23 +25,20 @@ namespace Test
         }
         static public void partie(bool[,] pions, bool[,] infos, string[,] grille)
         {
-            bool victoire = false;
             int placementx = 1;
             int placementy = 1;
             int cpt = 0;
             int[] pionDonne = new int[2];
-            while(verifVictoire(placementx, placementy, infos) == false)
+            while (verifVictoire(placementx, placementy, infos) == false)
             {
                 if (cpt % 2 == 0)
                 {
                     pionDonne = adversaireNiv1(pions, infos, grille, out placementx, out placementy);
-                    victoire = verifVictoire(placementx, placementy, infos);
                     cpt++;
                 }
                 else
                 {
                     joueur(pions, infos, pionDonne, grille, out placementx, out placementy);
-                    victoire = verifVictoire(placementx, placementy, infos);
                     cpt++;
                 }
             }
@@ -53,8 +50,25 @@ namespace Test
             {
                 Console.WriteLine("Vous avez gagné !");
             }
-
         }
+        public bool verifEgalite(bool[,] infos)
+        {
+            int cpt = 0;
+            for(int i = 0; i<4; i++)
+            {
+                for(int j = 4; j<20; j = j+5)
+                {
+                    if (infos[i, j] == true)
+                        cpt = cpt + 1;
+                }
+            }
+            if (cpt == 16)
+                return true;
+            else return false;
+        }
+
+
+        
         public static int[] adversaireNiv1(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy)
         {
             char[] carac = { 'A', 'B', 'C', 'D' };
