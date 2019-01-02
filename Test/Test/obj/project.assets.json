@@ -687,11 +687,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\theka\\source\\repos\\Test\\Test\\Test.csproj",
+      "projectUniqueName": "C:\\Users\\theka\\Documents\\GitHub\\QuartoDuSalle\\Test\\Test\\Test.csproj",
       "projectName": "Test",
-      "projectPath": "C:\\Users\\theka\\source\\repos\\Test\\Test\\Test.csproj",
+      "projectPath": "C:\\Users\\theka\\Documents\\GitHub\\QuartoDuSalle\\Test\\Test\\Test.csproj",
       "packagesPath": "C:\\Users\\theka\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\theka\\source\\repos\\Test\\Test\\obj\\",
+      "outputPath": "C:\\Users\\theka\\Documents\\GitHub\\QuartoDuSalle\\Test\\Test\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

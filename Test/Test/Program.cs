@@ -566,7 +566,7 @@ namespace Test
             {
                 if (j == 0 || j == 8)
                 {
-                    G_cercle_plein[j] = "        @@@@        ";
+                    G_cercle_plein[j] = "         @@         ";
                 }
                 if (j == 1 || j == 7)
                 {
@@ -574,11 +574,11 @@ namespace Test
                 }
                 if (j == 2 || j == 6)
                 {
-                    G_cercle_plein[j] = "    @@@@@@@@@@@@    ";
+                    G_cercle_plein[j] = "   @@@@@@@@@@@@@@   ";
                 }
                 if (j == 3 || j == 5)
                 {
-                    G_cercle_plein[j] = "  @@@@@@@@@@@@@@@@  ";
+                    G_cercle_plein[j] = " @@@@@@@@@@@@@@@@@@ ";
                 }
                 if (j == 4)
                 {
@@ -629,7 +629,7 @@ namespace Test
             {
                 if (j == 0 || j == 8)
                 {
-                    G_cercle_vide[j] = "        @  @        ";
+                    G_cercle_vide[j] = "         @@         ";
                 }
                 if (j == 1 || j == 7)
                 {
@@ -637,11 +637,11 @@ namespace Test
                 }
                 if (j == 2 || j == 6)
                 {
-                    G_cercle_vide[j] = "    @          @    ";
+                    G_cercle_vide[j] = "   @            @   ";
                 }
                 if (j == 3 || j == 5)
                 {
-                    G_cercle_vide[j] = "  @              @  ";
+                    G_cercle_vide[j] = " @                @ ";
                 }
                 if (j == 4)
                 {
@@ -732,7 +732,7 @@ namespace Test
             {
                 if (j == 0 || j == 8)
                 {
-                    G_cercle_plein[j] = "        oooo        ";
+                    G_cercle_plein[j] = "         oo         ";
                 }
                 if (j == 1 || j == 7)
                 {
@@ -740,11 +740,11 @@ namespace Test
                 }
                 if (j == 2 || j == 6)
                 {
-                    G_cercle_plein[j] = "    oooooooooooo    ";
+                    G_cercle_plein[j] = "   oooooooooooooo   ";
                 }
                 if (j == 3 || j == 5)
                 {
-                    G_cercle_plein[j] = "  oooooooooooooooo  ";
+                    G_cercle_plein[j] = " oooooooooooooooooo ";
                 }
                 if (j == 4)
                 {
@@ -796,7 +796,7 @@ namespace Test
             {
                 if (j == 0 || j == 8)
                 {
-                    G_cercle_vide[j] = "        o  o        ";
+                    G_cercle_vide[j] = "         oo         ";
                 }
                 if (j == 1 || j == 7)
                 {
@@ -804,11 +804,11 @@ namespace Test
                 }
                 if (j == 2 || j == 6)
                 {
-                    G_cercle_vide[j] = "    o          o    ";
+                    G_cercle_vide[j] = "   o            o   ";
                 }
                 if (j == 3 || j == 5)
                 {
-                    G_cercle_vide[j] = "  o              o  ";
+                    G_cercle_vide[j] = " o                o ";
                 }
                 if (j == 4)
                 {
