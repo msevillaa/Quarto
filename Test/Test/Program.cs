@@ -1,57 +1,226 @@
 ﻿using System;
 
+
 namespace Test
 {
     class Program
     {
         static void Main(string[] args)
         {
+
             // /*
-            bool[,] infos = new bool[4, 20];
-            affichage(infos);
-
-
             Random alea = new Random();
+            bool[,] infos = new bool[4, 20];
+
+
+
+
             string[,] grille = new string[36, 14];
             bool[] pionJoue = new bool[5];// on crée la grille qui représentera le jeu
             // infoHasard(infos);
             bool[,] pions = initPions();
-            ActuGrille(grille, infos, pions);
-            Actuaffichage(grille);
-            partie(pions, infos, grille);
+            initGame();
+
             
 
 
         }
-        static public void partie(bool[,] pions, bool[,] infos, string[,] grille)
+
+        static public void initGame()
         {
+            int cptVictoire = 0;
+            int cptDefaite = 0;
+            int cptEgal = 0;
+            int issue;
+            char replay = 'O';
+            int difficulty = 3;
+            for (int i = 0; i < 4; i++)
+            {
+                Console.WriteLine(@"         _______                   _____                    _____                    _____                _____                   _______         ");
+                Console.WriteLine(@"        /::\    \                 /\    \                  /\    \                  /\    \              /\    \                 /::\    \        ");
+                Console.WriteLine(@"       /::::\    \               /::\____\                /::\    \                /::\    \            /::\    \               /::::\    \       ");
+                Console.WriteLine(@"      /::::::\    \             /:::/    /               /::::\    \              /::::\    \           \:::\    \             /::::::\    \      ");
+                Console.WriteLine(@"     /::::::::\    \           /:::/    /               /::::::\    \            /::::::\    \           \:::\    \           /::::::::\    \     ");
+                Console.WriteLine(@"    /:::/~~\:::\    \         /:::/    /               /:::/\:::\    \          /:::/\:::\    \           \:::\    \         /:::/~~\:::\    \    ");
+                Console.WriteLine(@"   /:::/    \:::\    \       /:::/    /               /:::/__\:::\    \        /:::/__\:::\    \           \:::\    \       /:::/    \:::\    \   ");
+                Console.WriteLine(@"  /:::/    / \:::\    \     /:::/    /               /::::\   \:::\    \      /::::\   \:::\    \          /::::\    \     /:::/    / \:::\    \  ");
+                Console.WriteLine(@" /:::/____/   \:::\____\   /:::/    /      _____    /::::::\   \:::\    \    /::::::\   \:::\    \        /::::::\    \   /:::/____/   \:::\____\ ");
+                Console.WriteLine(@"|:::|    |     |:::|    | /:::/____/      /\    \  /:::/\:::\   \:::\    \  /:::/\:::\   \:::\____\      /:::/\:::\    \ |:::|    |     |:::|    |");
+                Console.WriteLine(@"|:::|____|     |:::|____||:::|    /      /::\____\/:::/  \:::\   \:::\____\/:::/  \:::\   \:::|    |    /:::/  \:::\____\|:::|____|     |:::|    |");
+                Console.WriteLine(@" \:::\   _\___/:::/    / |:::|____\     /:::/    /\::/    \:::\  /:::/    /\::/   |::::\  /:::|____|   /:::/    \::/    / \:::\    \   /:::/    / ");
+                Console.WriteLine(@"  \:::\ |::| /:::/    /   \:::\    \   /:::/    /  \/____/ \:::\/:::/    /  \/____|:::::\/:::/    /   /:::/    / \/____/   \:::\    \ /:::/    /  ");
+                Console.WriteLine(@"   \:::\|::|/:::/    /     \:::\    \ /:::/    /            \::::::/    /         |:::::::::/    /   /:::/    /             \:::\    /:::/    /   ");
+                Console.WriteLine(@"    \::::::::::/    /       \:::\    /:::/    /              \::::/    /          |::|\::::/    /   /:::/    /               \:::\__/:::/    /    ");
+                Console.WriteLine(@"     \::::::::/    /         \:::\__/:::/    /               /:::/    /           |::| \::/____/    \::/    /                 \::::::::/    /   ");
+                Console.WriteLine(@"      \::::::/    /           \::::::::/    /               /:::/    /            |::|  ~|           \/____/                   \::::::/    /     ");
+                Console.WriteLine(@"       \::::/____/             \::::::/    /               /:::/    /             |::|   |                                      \::::/    /      ");
+                Console.WriteLine(@"        |::|    |               \::::/    /               /:::/    /              \::|   |                                       \::/____/       ");
+                Console.WriteLine(@"        |::|____|                \::/____/                \::/    /                \:|   |                                        ~~              ");
+                Console.WriteLine(@"         ~~                       ~~                       \/____/                  \|___|                                                        ");
+
+                Console.WriteLine(@"                                           _____  _           __     __   _____          __  __ ______ ");
+                Console.WriteLine(@"                                          |  __ \| |        /\\ \   / /  / ____|   /\   |  \/  |  ____|");
+                Console.WriteLine(@"                                          | |__) | |       /  \\ \_/ /  | |  __   /  \  | \  / | |__   ");
+                Console.WriteLine(@"                                          |  ___/| |      / /\ \\   /   | | |_ | / /\ \ | |\/| |  __|  ");
+                Console.WriteLine(@"                                          | |    | |____ / ____ \| |    | |__| |/ ____ \| |  | | |____ ");
+                Console.WriteLine(@"                                          |_|    |______/_/    \_\_|     \_____/_/    \_\_|  |_|______| ");
+                System.Threading.Thread.Sleep(500);
+                Console.Clear();
+                Console.WriteLine(@"         _______                   _____                    _____                    _____                _____                   _______         ");
+                Console.WriteLine(@"        /::\    \                 /\    \                  /\    \                  /\    \              /\    \                 /::\    \        ");
+                Console.WriteLine(@"       /::::\    \               /::\____\                /::\    \                /::\    \            /::\    \               /::::\    \       ");
+                Console.WriteLine(@"      /::::::\    \             /:::/    /               /::::\    \              /::::\    \           \:::\    \             /::::::\    \      ");
+                Console.WriteLine(@"     /::::::::\    \           /:::/    /               /::::::\    \            /::::::\    \           \:::\    \           /::::::::\    \     ");
+                Console.WriteLine(@"    /:::/~~\:::\    \         /:::/    /               /:::/\:::\    \          /:::/\:::\    \           \:::\    \         /:::/~~\:::\    \    ");
+                Console.WriteLine(@"   /:::/    \:::\    \       /:::/    /               /:::/__\:::\    \        /:::/__\:::\    \           \:::\    \       /:::/    \:::\    \   ");
+                Console.WriteLine(@"  /:::/    / \:::\    \     /:::/    /               /::::\   \:::\    \      /::::\   \:::\    \          /::::\    \     /:::/    / \:::\    \  ");
+                Console.WriteLine(@" /:::/____/   \:::\____\   /:::/    /      _____    /::::::\   \:::\    \    /::::::\   \:::\    \        /::::::\    \   /:::/____/   \:::\____\ ");
+                Console.WriteLine(@"|:::|    |     |:::|    | /:::/____/      /\    \  /:::/\:::\   \:::\    \  /:::/\:::\   \:::\____\      /:::/\:::\    \ |:::|    |     |:::|    |");
+                Console.WriteLine(@"|:::|____|     |:::|____||:::|    /      /::\____\/:::/  \:::\   \:::\____\/:::/  \:::\   \:::|    |    /:::/  \:::\____\|:::|____|     |:::|    |");
+                Console.WriteLine(@" \:::\   _\___/:::/    / |:::|____\     /:::/    /\::/    \:::\  /:::/    /\::/   |::::\  /:::|____|   /:::/    \::/    / \:::\    \   /:::/    / ");
+                Console.WriteLine(@"  \:::\ |::| /:::/    /   \:::\    \   /:::/    /  \/____/ \:::\/:::/    /  \/____|:::::\/:::/    /   /:::/    / \/____/   \:::\    \ /:::/    /  ");
+                Console.WriteLine(@"   \:::\|::|/:::/    /     \:::\    \ /:::/    /            \::::::/    /         |:::::::::/    /   /:::/    /             \:::\    /:::/    /   ");
+                Console.WriteLine(@"    \::::::::::/    /       \:::\    /:::/    /              \::::/    /          |::|\::::/    /   /:::/    /               \:::\__/:::/    /    ");
+                Console.WriteLine(@"     \::::::::/    /         \:::\__/:::/    /               /:::/    /           |::| \::/____/    \::/    /                 \::::::::/    /   ");
+                Console.WriteLine(@"      \::::::/    /           \::::::::/    /               /:::/    /            |::|  ~|           \/____/                   \::::::/    /     ");
+                Console.WriteLine(@"       \::::/____/             \::::::/    /               /:::/    /             |::|   |                                      \::::/    /      ");
+                Console.WriteLine(@"        |::|    |               \::::/    /               /:::/    /              \::|   |                                       \::/____/       ");
+                Console.WriteLine(@"        |::|____|                \::/____/                \::/    /                \:|   |                                        ~~              ");
+                Console.WriteLine(@"         ~~                       ~~                       \/____/                  \|___|                                                        ");
+                Console.ForegroundColor = ConsoleColor.Black;
+                Console.WriteLine(@"                                           _____  _           __     __   _____          __  __ ______ ");
+                Console.WriteLine(@"                                          |  __ \| |        /\\ \   / /  / ____|   /\   |  \/  |  ____|");
+                Console.WriteLine(@"                                          | |__) | |       /  \\ \_/ /  | |  __   /  \  | \  / | |__   ");
+                Console.WriteLine(@"                                          |  ___/| |      / /\ \\   /   | | |_ | / /\ \ | |\/| |  __|  ");
+                Console.WriteLine(@"                                          | |    | |____ / ____ \| |    | |__| |/ ____ \| |  | | |____ ");
+                Console.WriteLine(@"                                          |_|    |______/_/    \_\_|     \_____/_/    \_\_|  |_|______| ");
+                System.Threading.Thread.Sleep(500);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Clear();
+            }
+            while (replay == 'O')
+            {
+                difficulty = 3;
+                while (difficulty != 1 && difficulty != 2)
+                { 
+                    Console.Clear();
+                    Console.WriteLine(@"   _____ _           _     _                    _             _ _  __  __ _            _ _    __      ");
+                    Console.WriteLine(@"  / ____| |         (_)   (_)                  | |           | (_)/ _|/ _(_)          | | |  /_/   _  ");
+                    Console.WriteLine(@" | |    | |__   ___  _ ___ _ ___ ___  ___ ____ | | __ _    __| |_| |_| |_ _  ___ _   _| | |_ ___  (_) ");
+                    Console.WriteLine(@" | |    | '_ \ / _ \| / __| / __/ __|/ _ \_  / | |/ _` |  / _` | |  _|  _| |/ __| | | | | __/ _ \     ");
+                    Console.WriteLine(@" | |____| | | | (_) | \__ \ \__ \__ \  __// /  | | (_| | | (_| | | | | | | | (__| |_| | | ||  __/  _  ");
+                    Console.WriteLine(@"  \_____|_| |_|\___/|_|___/_|___/___/\___/___| |_|\__,_|  \__,_|_|_| |_| |_|\___|\__,_|_|\__\___| (_) ");
+                    Console.WriteLine(@"");
+                    Console.WriteLine(@"");
+                    Console.WriteLine(@"  __       ______         _ _          __        _   __       _        _           __  ");
+                    Console.WriteLine(@" /_ |  _  |  ____|       (_) |        / /       | | /_/      | |      (_)          \ \ ");
+                    Console.WriteLine(@"  | | (_) | |__ __ _  ___ _| | ___   | |    __ _| | ___  __ _| |_ ___  _ _ __ ___   | |");
+                    Console.WriteLine(@"  | |     |  __/ _` |/ __| | |/ _ \  | |   / _` | |/ _ \/ _` | __/ _ \| | '__/ _ \  | |");
+                    Console.WriteLine(@"  | |  _  | | | (_| | (__| | |  __/  | |  | (_| | |  __/ (_| | || (_) | | | |  __/  | |");
+                    Console.WriteLine(@"  |_| (_) |_|  \__,_|\___|_|_|\___|  | |   \__,_|_|\___|\__,_|\__\___/|_|_|  \___|  | |");
+                    Console.WriteLine(@"                                      \_\                                          /_/ ");
+                    Console.WriteLine(@"");
+                    Console.WriteLine(@"");
+                    Console.WriteLine(@"  ___        __  __                        ");
+                    Console.WriteLine(@" |__ \   _  |  \/  |                       ");
+                    Console.WriteLine(@"    ) | (_) | \  / | ___  _   _  ___ _ __  ");
+                    Console.WriteLine(@"   / /      | |\/| |/ _ \| | | |/ _ \ '_ \ ");
+                    Console.WriteLine(@"  / /_   _  | |  | | (_) | |_| |  __/ | | |");
+                    Console.WriteLine(@" |____| (_) |_|  |_|\___/ \__, |\___|_| |_|");
+                    Console.WriteLine(@"                           __/ |           ");
+                    Console.WriteLine(@"                          |___/           ");
+                    difficulty = int.Parse(Console.ReadLine());
+                }
+                Console.Clear();
+                bool[,] infos = new bool[4, 20];
+                string[,] grille = new string[36, 14];
+                bool[] pionJoue = new bool[5];// on crée la grille qui représentera le jeu                              // infoHasard(infos);
+                bool[,] pions = initPions();
+                ActuGrille(grille, infos, pions);
+                Actuaffichage(grille);
+                issue = partie(pions, infos, grille, difficulty);
+                if (issue == 1)
+                    cptVictoire++;
+                else
+                {
+                    if (issue == -1)
+                        cptDefaite++;
+                    else
+                        cptEgal++;
+                }
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("                           |  V  |  E  |  D  |");
+                Console.WriteLine("                           |-----|-----|-----|");
+                Console.WriteLine("                           |     |     |     |");
+                Console.WriteLine("                           |  {0}  |  {1}  |  {2}  |", cptVictoire, cptEgal, cptDefaite);
+                Console.WriteLine("                           |     |     |     |");
+                Console.WriteLine("                           |-----|-----|-----|");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine(@"  _____            _               ___     __   ____        __  _   _  __  ");
+                Console.WriteLine(@" |  __ \          | |             |__ \   / /  / __ \      / / | \ | | \ \ ");
+                Console.WriteLine(@" | |__) |___ _ __ | | __ _ _   _     ) | | |  | |  | |    / /  |  \| |  | |");
+                Console.WriteLine(@" |  _  // _ \ '_ \| |/ _` | | | |   / /  | |  | |  | |   / /   | . ` |  | |");
+                Console.WriteLine(@" | | \ \  __/ |_) | | (_| | |_| |  |_|   | |  | |__| |  / /    | |\  |  | |");
+                Console.WriteLine(@" |_|  \_\___| .__/|_|\__,_|\__, |  (_)   | |   \____/  /_/     |_| \_|  | |");
+                Console.WriteLine(@"            | |             __/ |         \_\                          /_/ ");
+                Console.WriteLine(@"            |_|            |___/                                           ");
+                replay = char.Parse(Console.ReadLine());
+            }
+
+        }
+        static public int partie(bool[,] pions, bool[,] infos, string[,] grille, int difficulty)
+        {
+            
+            bool[] pionJoue = new bool[5];
             int placementx = 1;
             int placementy = 1;
             int cpt = 0;
             int[] pionDonne = new int[2];
-            while (verifVictoire(placementx, placementy, infos) == false)
+            while (verifVictoire(placementx, placementy, infos) == false && verifEgalite(infos) == false)
             {
                 if (cpt % 2 == 0)
                 {
-                    pionDonne = adversaireNiv1(pions, infos, grille, out placementx, out placementy);
+                    donnePionJoueur(pions, ref pionJoue);
+                    if (difficulty == 2)
+                        adversaireNiv2(pions, infos, grille, out placementx, out placementy, pionJoue);
+                    else
+                        adversaireNiv1(pions, infos, grille, out placementx, out placementy, pionJoue);
                     cpt++;
                 }
                 else
                 {
-                    joueur(pions, infos, pionDonne, grille, out placementx, out placementy);
+                    donnePionAdversaire(pions, ref pionJoue);
+                    joueur(pions, infos, pionJoue, grille, out placementx, out placementy);
                     cpt++;
                 }
             }
-            if (cpt % 2 == 1)
+
+            if (verifEgalite(infos) == true)
             {
-                Console.WriteLine("L'adversaire a gagné");
+                Console.WriteLine("Il y a égalité");
+                return 0;
             }
             else
             {
-                Console.WriteLine("Vous avez gagné !");
+                if (cpt % 2 == 1)
+                {
+                    Console.WriteLine("L'adversaire a gagné en {0} coups !", cpt);
+                    return -1;
+                }
+                else
+                {
+                    Console.WriteLine("Vous avez gagné en {0} coups !", cpt);
+                    return 1;
+                }
+               
             }
+            
+
         }
-        public bool verifEgalite(bool[,] infos)
+
+        public static bool verifEgalite(bool[,] infos)
         {
             int cpt = 0;
             for(int i = 0; i<4; i++)
@@ -67,32 +236,303 @@ namespace Test
             else return false;
         }
 
-
-        
-        public static int[] adversaireNiv1(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy)
+        public static void donnePionJoueur(bool[,] pions, ref bool[] pionJoue)
         {
             char[] carac = { 'A', 'B', 'C', 'D' };
-            Random alea = new Random();
-            bool[] pionJoue = new bool[5];
-            
             Console.WriteLine("Quel pions voulez-vous donner à l'adversaire ? (Exemple : B2)");
             string coord = Console.ReadLine();
             char pos = coord[0];
             int posy = (int)Char.GetNumericValue(coord[1]);
             bool test = pions[convertCoord(pos), posy * 5 - 1];
-            while(test == false)
+            while (test == false)
             {
                 Console.WriteLine("Ce pions a déjà été utilisé.");
                 Console.WriteLine("Quel pions voulez-vous donner à l'adversaire ? (Exemple : B2)");
                 coord = Console.ReadLine();
                 pos = coord[0];
                 posy = (int)Char.GetNumericValue(coord[1]);
-                test = pions[convertCoord(pos), posy*5-1];
+                test = pions[convertCoord(pos), posy * 5 - 1];
             }
-            pionJoue = choixPions(pos, posy, pions);
+            pionJoue = choixPions(convertCoord(pos), posy-1, pions);
+            Console.Clear();
+        }
+        public static void donnePionAdversaire(bool[,] pions, ref bool[] pionJoue)
+        {
+            char[] carac = { 'A', 'B', 'C', 'D' };
+            int choixpionsx = 0;
+            int choixpionsy = 0;
+            bool test = false;
+            while (test == false)
+            {
+                Random alea2 = new Random();
+                choixpionsx = alea2.Next(0, 4);
+                choixpionsy = alea2.Next(0, 4);
+                test = pions[choixpionsx, choixpionsy * 5 + 4];
+            }
+            pionJoue = choixPions(choixpionsx, choixpionsy, pions);
+            Console.WriteLine("L'adversaire vous donne le pion {0}{1}.", carac[choixpionsx], choixpionsy + 1);
+        }
+        public static int adversaireNiv2(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy, bool[] pionJoue)
+        {
+            char[] carac = { 'A', 'B', 'C', 'D' };
+            if (adversaireNiv2_verifLigne(pions, infos, grille, out placementx, out placementy, pionJoue) == true)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    infos[placementx, placementy * 5 + i] = pionJoue[i];
+                }
+                Console.Clear();
+                ActuGrille(grille, infos, pions);
+                Actuaffichage(grille);
+                Console.WriteLine("L'adversaire a joué en {0}{1}.", carac[placementx], placementy + 1);
+                return 1;
+            }
+            else
+            { 
+                if (adversaireNiv2_verifColonne(pions, infos, grille, out placementx, out placementy, pionJoue) == true)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        infos[placementx, placementy * 5 + i] = pionJoue[i];
+                    }
+                    Console.Clear();
+                    ActuGrille(grille, infos, pions);
+                    Actuaffichage(grille);
+                    Console.WriteLine("L'adversaire a joué en {0}{1}.", carac[placementx], placementy + 1);
+                    return 1;
+                }
+
+                else
+                {
+                    if (adversaireNiv2_verifDiagG(pions, infos, grille, out placementx, out placementy, pionJoue) == true)
+                    {
+                        for (int i = 0; i < 5; i++)
+                        {
+                            infos[placementx, placementy * 5 + i] = pionJoue[i];
+                        }
+                        Console.Clear();
+                        ActuGrille(grille, infos, pions);
+                        Actuaffichage(grille);
+                        Console.WriteLine("L'adversaire a joué en {0}{1}.", carac[placementx], placementy + 1);
+                        return 1;
+                    }
+
+                    else
+                    {
+                        if (adversaireNiv2_verifDiagD(pions, infos, grille, out placementx, out placementy, pionJoue) == true)
+                        {
+                            for (int i = 0; i < 5; i++)
+                            {
+                                infos[placementx, placementy * 5 + i] = pionJoue[i];
+                            }
+                            Console.Clear();
+                            ActuGrille(grille, infos, pions);
+                            Actuaffichage(grille);
+                            Console.WriteLine("L'adversaire a joué en {0}{1}.", carac[placementx], placementy + 1);
+                            return 1;
+                        }
+                        else
+                        {
+                            adversaireNiv1(pions, infos, grille, out placementx, out placementy, pionJoue);
+                            return 1;
+                        }
+                    }
+                }
+            }
+                    
+                
+            
+        }
+        public static bool adversaireNiv2_verifDiagG(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy, bool[] pionJoue)
+        {
+            int temp = 0;
+            int temp2 = 0;
+            int temp3 = 0;
+            int cpt = 0;
+            int cpt2 = 0;
             placementx = 0;
             placementy = 0;
-            test = true;
+            for(int i =1; i<5; i++)
+            {
+                if (infos[i - 1, i * 5 - 1] == true)
+                    cpt++;
+            }
+            if(cpt==3)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j < 16; j = j + 5)
+                    {
+                        if (pionJoue[i] == infos[j / 5, j + i] && infos[j/5, j +4] == true)
+                        {
+                            cpt2++;
+                        }
+                        else
+                        {
+                            temp = j / 5;
+                            temp2 = j/5;
+                            temp3 = j + 4;
+                        }
+                    }
+                    if (cpt2 == 3 && infos[temp, temp3] == false)
+                    {
+                        placementx = temp;
+                        placementy = temp2;
+                        return true;
+                    }
+                    else
+                    {
+                        cpt2 = 0;
+                    }
+                }
+
+            }
+            return false;
+
+        }
+        public static bool adversaireNiv2_verifDiagD(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy, bool[] pionJoue)
+        {
+            int temp = 0;
+            int temp2 = 0;
+            int temp3 = 0;
+            int cpt = 0;
+            int cpt2 = 0;
+            placementx = 0;
+            placementy = 0;
+            for (int i = 1; i<5; i++)
+            {
+                if (infos[4-i, i * 5 - 1] == true)
+                    cpt++;
+            }
+            if (cpt == 3)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = 0; j <16; j = j + 5)
+                    {
+                        if (pionJoue[i] == infos[3-(j / 5), j + i] && infos[3-(j/5), j+4] == true)
+                        {
+                            cpt2++;
+                        }
+                        else
+                        {
+                            temp = 3-(j / 5);
+                            temp2 = j/ 5;
+                            temp3 = j + 4;
+                        }
+                    }
+                    if (cpt2 == 3 && infos[temp, temp3] == false)
+                    {
+                        placementx = temp;
+                        placementy = temp2;
+                        return true;
+                    }
+                    else
+                    {
+                        cpt2 = 0;
+                    }
+                }
+
+            }
+            return false;
+
+        }
+        public static bool adversaireNiv2_verifColonne(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy, bool[] pionJoue)
+        {
+            placementx = 0;
+            placementy = 0;
+            int l = 0;
+            int temp = 0;
+            int cpt = 0;
+            int cpt2 = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 0; j < 4; j++)
+                {
+                    if (infos[j, i*5+4] == true)
+                        cpt++;
+                }
+                if (cpt == 3)
+                {
+                    for (int n = 0; n < 4; n++)
+                    {
+                        for (int m = 0; m < 4; m++)
+                        {
+                            
+                            if (pionJoue[n] == infos[m, i*5+n] && infos[m, i*5+4] == true)
+                            {
+                                cpt2++;
+                                Console.WriteLine(m);
+                            }
+                        }
+                        if (cpt2 == 3)
+                        {
+                            for(int o = 0; o<4; o++)
+                            {
+                                Console.WriteLine(pionJoue[n] + "   " + infos[o, i * 5 + n] + "             " + infos[o, i * 5 + 4]); 
+                                if (infos[o, i*5+4] == false)
+                                {
+                                    placementx = o;
+                                    placementy = i;
+                                    return true;
+                                }
+                            }
+                        }   
+                        cpt2 = 0;
+                    }
+                }
+                cpt = 0;
+            }
+            return false;   
+        }
+        public static bool adversaireNiv2_verifLigne(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy, bool[] pionJoue)
+        {
+            int cpt = 0;
+            int cpt2 = 0;
+            placementx = 0;
+            placementy = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int j = 4; j < 20; j = j + 5)
+                    if (infos[i, j] == true)
+                        cpt++;
+                if (cpt == 3)
+                {
+                    for (int k = 0; k < 4; k++)
+                    {
+                        for (int l = 0; l < 16; l = l + 5)
+                        {
+                            if (pionJoue[k] == infos[i, l + k] && infos[i, l+4] == true)
+                            {
+                                cpt2++;
+                            }
+                        }
+                        if (cpt2 == 3)
+                        {
+                            for (int m = 0; m < 4; m++)
+                                if (infos[i,m*5+4] == false)
+                                {
+                                    placementx = i;
+                                    placementy = m;
+                                    return true;
+                                }
+                        }
+                        cpt2 = 0;
+                    }
+                }
+                cpt = 0;
+            }
+            return false;
+        }
+        
+        public static void adversaireNiv1(bool[,] pions, bool[,] infos, string[,] grille, out int placementx, out int placementy, bool[] pionJoue)
+        {
+            char[] carac = { 'A', 'B', 'C', 'D' };
+            Random alea = new Random();
+            placementx = 0;
+            placementy = 0;
+            bool test = true;
+
             while (test == true)
             {
                 placementx = alea.Next(0, 4);
@@ -103,35 +543,21 @@ namespace Test
             {
                 infos[placementx, placementy*5 + i] = pionJoue[i];
             }
+
             Console.Clear();
             ActuGrille(grille, infos, pions);
             Actuaffichage(grille);
             Console.WriteLine("L'adversaire a joué en {0}{1}.", carac[placementx], placementy + 1);
-            int choixpionsx = 0;
-            int choixpionsy = 0;
-            test = false;
-            while (test == false)
-            {
-                Random alea2 = new Random();
-                choixpionsx = alea2.Next(0, 4);
-                choixpionsy = alea2.Next(0, 4);
-                test = pions[choixpionsx, choixpionsy*5 + 4];
-            }
-            int[] pionDonne = { choixpionsx, choixpionsy };
-            return pionDonne;
         }
-        public static void joueur(bool[,] pions, bool[,] infos, int[] pionDonne, string[,] grille, out int placementx, out int placementy)
+
+        public static void joueur(bool[,] pions, bool[,] infos, bool[] pionJoue, string[,] grille, out int placementx, out int placementy)
         {
             char[] carac = { 'A', 'B', 'C', 'D' };
-            int choixpionsx = pionDonne[0];
-            int choixpionsy = pionDonne[1];
-            Console.WriteLine("L'adversaire vous donne le pion {0}{1}.", carac[choixpionsx], choixpionsy + 1);
             Console.WriteLine("Où placez-vous le pions ? (Ex : A2)");
             string coord = Console.ReadLine();
             char placement = coord[0];
             placementy = (int)Char.GetNumericValue(coord[1]);
-            bool[] pionJoue = new bool[5];
-            pionJoue = choixPions(carac[choixpionsx], choixpionsy+1, pions);
+
             
             placementx = convertCoord(placement);
             bool test = infos[placementx, (placementy) * 5 - 1];
@@ -154,7 +580,6 @@ namespace Test
             ActuGrille(grille, infos, pions);
             Actuaffichage(grille);
         }
-
 
         public static bool verifVictoire(int pos, int posy, bool[,] infos)
         {
@@ -219,61 +644,62 @@ namespace Test
                     }
                 return true;
             }
-            if(posy == posx)
+            
+            
+                
+            int cpt3 = 4;
+            int cpt4 = 0;
+            for(int i = 0   ; i<4; i++)
             {
-                int cpt3 = 4;
-                int cpt4 = 0;
-                for(int i = 0   ; i<4; i++)
+                if (infos[i, cpt3] == true)
                 {
-                    if (infos[i, cpt3] == true)
-                    {
-                        cpt4++;
-                    }
-                    cpt3 = cpt3 + 5;
+                    cpt4++;
                 }
-                int cpt5 = 4;
-                int cpt6 = 0;
-                for (int i = 3; i >=0; i--)
-                {
-                    if (infos[i, cpt5] == true)
-                    {
-                        cpt6++;
-                    }
-                    cpt5 = cpt5 + 5;
-                }
-                if(cpt4 ==4)
-                {
-                    int indice = 0;
-                    int reste = 0;
-                    for(int i =0; i<4; i++)
-                    {
-                        for (int j = reste; j < reste + 4; j++)
-                        {
-
-                            arg[indice] = infos[i, j]; // possibilité de renvoyer les coordonnées
-                            indice++;
-                        }
-                        reste = reste + 5;
-                    }
-                    return true;
-                }
-                if (cpt6 == 4)
-                {
-                    int indice = 0;
-                    int reste = 0;
-                    for (int i = 3; i >= 0; i--)
-                    {
-                        for (int j = reste; j < reste + 4; j++)
-                        {
-                            arg[indice] = infos[i, j];
-                            indice++;// possibilité de renvoyer les coordonnées
-                        }
-                        reste = reste + 5;
-                    }
-                    return true;
-                }
+                cpt3 = cpt3 + 5;
             }
-            return false;
+            int cpt5 = 4;
+            int cpt6 = 0;
+            for (int i = 0; i <4; i++)
+            {
+                if (infos[3-i, cpt5] == true)
+                {
+                    cpt6++;
+                }
+                cpt5 = cpt5 + 5;
+            }
+            if(cpt4 == 4)
+            {
+                int indice = 0;
+                int reste = 0;
+                for(int i =0; i<4; i++)
+                {
+                    for (int j = reste; j < reste + 4; j++)
+                    {
+
+                        arg[indice] = infos[i, j]; // possibilité de renvoyer les coordonnées
+                        indice++;
+                    }
+                    reste = reste + 5;
+                }
+                return true;
+            }
+            if (cpt6 == 4)
+            {
+                int indice = 0;
+                int reste = 0;
+                for (int i = 0; i < 4; i++)
+                {
+                    for (int j = reste; j < reste + 4; j++)
+                    {
+                        arg[indice] = infos[3-i, j];
+                        indice++;// possibilité de renvoyer les coordonnées
+                    }
+                    reste = reste + 5;
+                }
+                return true;
+            }
+            
+        return false;
         }
         public static int convertCoord(char pos)
         {
@@ -288,13 +714,12 @@ namespace Test
                 posx = 3;
             return posx;
         }
-        public static bool[] choixPions(char pos, int posy, bool[,] pions)
+        public static bool[] choixPions(int posx, int posy, bool[,] pions)
         {
             bool[] pionJoue = new bool[5];
-            int posx = convertCoord(pos);
             for (int i = 0; i < 5; i++)
-                pionJoue[i] = pions[posx, (posy-1) * 5 + i];
-            pions[posx, (posy) * 5 - 1] = false;
+                pionJoue[i] = pions[posx, posy * 5 + i];
+            pions[posx, (posy) * 5 + 4] = false;
             return pionJoue;
         }
         
